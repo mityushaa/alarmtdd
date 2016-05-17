@@ -80,4 +80,8 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         }catch(Exception ex){return false;}
         return true;
     }
+    public boolean CancelAlarm(Context context)
+    {
+        return true;
+    }
 }

@@ -35,4 +35,15 @@ public class ExampleUnitTest {
         manager = new AlarmManagerBroadcastReceiver();
         Assert.assertEquals(false,manager.SetAlarm(activity.getApplicationContext()) );
     }
+    @Test
+    public void cancelAlarmTestTrue(){
+        manager = new AlarmManagerBroadcastReceiver();
+        activity = new AlarmActivity();
+        Assert.assertEquals(true,manager.CancelAlarm(activity.getApplicationContext()) );
+    }
+    @Test
+    public void cancelAlarmTestFalse(){
+        manager = new AlarmManagerBroadcastReceiver();
+        Assert.assertEquals(false,manager.CancelAlarm(activity.getApplicationContext()) );
+    }
 }
