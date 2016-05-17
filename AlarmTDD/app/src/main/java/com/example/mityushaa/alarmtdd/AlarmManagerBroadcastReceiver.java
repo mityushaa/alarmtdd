@@ -69,7 +69,15 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         }
         return true;
     }
-    public boolean setAlarm(Context context){
+    public boolean SetAlarm(Context context)
+    {
+        try {
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
+            intent.putExtra(ONE_TIME, Boolean.FALSE);
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 60000, pi);
+        }catch(Exception ex){return false;}
         return true;
     }
 }
