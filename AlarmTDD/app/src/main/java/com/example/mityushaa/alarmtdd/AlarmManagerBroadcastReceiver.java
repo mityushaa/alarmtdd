@@ -80,8 +80,16 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         }catch(Exception ex){return false;}
         return true;
     }
+
     public boolean CancelAlarm(Context context)
     {
+        try {
+            Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
+            PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(sender);
+            Toast.makeText(context, "Stopped current alarm", Toast.LENGTH_LONG).show();
+        }catch (Exception ex){return false;}
         return true;
     }
 }
