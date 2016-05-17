@@ -58,6 +58,15 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         wl.release();
     }
     public boolean setOnetimeTimer(Context context){
+        try {
+            AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(context, AlarmManagerBroadcastReceiver.class);
+            intent.putExtra(ONE_TIME, Boolean.TRUE);//Задаем параметр интента
+            PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
+            am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), pi);
+        }catch (Exception ex){
+            return false;
+        }
         return true;
     }
 }
