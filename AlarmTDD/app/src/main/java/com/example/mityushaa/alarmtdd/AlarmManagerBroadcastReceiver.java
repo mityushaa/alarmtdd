@@ -69,4 +69,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         }
         return true;
     }
+    public boolean setAlarm(Context context){
+        return true;
+    }
 }

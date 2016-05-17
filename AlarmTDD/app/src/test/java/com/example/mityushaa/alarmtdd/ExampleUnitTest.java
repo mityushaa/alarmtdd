@@ -24,4 +24,15 @@ public class ExampleUnitTest {
         manager = new AlarmManagerBroadcastReceiver();
         Assert.assertEquals(false,manager.setOnetimeTimer(activity.getApplicationContext()) );
     }
+    @Test
+    public void setAlarmTestTrue(){
+        manager = new AlarmManagerBroadcastReceiver();
+        activity = new AlarmActivity();
+        Assert.assertEquals(true,manager.SetAlarm(activity.getApplicationContext()) );
+    }
+    @Test
+    public void setAlarmTestFalse(){
+        manager = new AlarmManagerBroadcastReceiver();
+        Assert.assertEquals(false,manager.SetAlarm(activity.getApplicationContext()) );
+    }
 }
